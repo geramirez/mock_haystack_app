@@ -1,4 +1,3 @@
-import datetime
 from haystack import indexes
 from mockapp.models import Tweet
 
@@ -13,5 +12,4 @@ class TweetIndex(indexes.SearchIndex, indexes.Indexable):
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
-        return self.get_model().objects.filter(
-            pub_date__lte=datetime.datetime.now())
+        return self.get_model().objects.order_by('author')
