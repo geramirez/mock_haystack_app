@@ -11,23 +11,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Post',
-            fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
-                ('pub_date', models.DateTimeField()),
-                ('message', models.TextField()),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
             name='Tweet',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
-                ('pub_date', models.DateTimeField()),
+                ('postid', models.CharField(primary_key=True, serialize=False, max_length=40)),
+                ('created_time', models.DateTimeField()),
                 ('from_user', models.CharField(max_length=100)),
+                ('retweeted_from', models.CharField(blank=True, max_length=20, null=True)),
                 ('message', models.TextField()),
+                ('retweets', models.IntegerField()),
+                ('favorites', models.IntegerField()),
             ],
             options={
             },

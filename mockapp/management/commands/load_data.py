@@ -6,5 +6,5 @@ class Command(BaseCommand):
 
     help = """ Loads data """
 
-    def handle(self, *args, **options):
+    def handle(self):
         load_data()

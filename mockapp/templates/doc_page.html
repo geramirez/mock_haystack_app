@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+    <title>Doc Page</title>
+</head>
+<body>
+    <h1>Tweet</h1>
+    <h4>{{doc.from_user}} : {{doc.message}}<h4>
+    {% if similars %}
+    <h1>Similar Tweets </h1>
+    {% for tweet in similars %}
+    {% endfor %}
+    {% endif %}
+</body>
+

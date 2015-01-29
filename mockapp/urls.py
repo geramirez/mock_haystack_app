@@ -1,11 +1,12 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'mockapp.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+from mockapp.views import document_page
 
+
+urlpatterns = patterns(
+    '',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/', include('haystack.urls')),
+    url(r'^tweet/(?P<postid>\d+)', document_page)
 )
