@@ -11,7 +11,11 @@ def document_page(request, postid):
         # add a message later
         pass
 
-    similars = SearchQuerySet().more_like_this(doc)
+    try:
+        similars = SearchQuerySet().more_like_this(doc)[0:10]
+    except:
+        # add a message later
+        pass
 
     return render(
         request,
