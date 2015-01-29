@@ -1,2 +1,3 @@
 {{ object.from_user }}
 {{ object.message }}
+{{ object.retweeted_from}}

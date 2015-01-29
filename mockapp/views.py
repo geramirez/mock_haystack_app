@@ -1,13 +1,19 @@
 from django.shortcuts import render
+from haystack.query import SearchQuerySet
 from mockapp.models import Tweet
 
 
 def document_page(request, postid):
     """ Returns a document page """
     try:
-        doc = Tweet.objects.filter(postid=postid).values()[0]
-        print(doc)
+        doc = Tweet.objects.get(postid=postid)
     except:
-        doc = {"error": "Could not find a tweet"}
+        # add a message later
+        pass
 
-    return render(request, "doc_page.html", {'doc': doc, 'similars': []})
+    similars = SearchQuerySet().more_like_this(doc)
+
+    return render(
+        request,
+        "doc_page.html",
+        {'doc': doc, 'similars': similars})

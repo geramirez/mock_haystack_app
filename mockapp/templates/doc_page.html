@@ -9,6 +9,7 @@
     {% if similars %}
     <h1>Similar Tweets </h1>
     {% for tweet in similars %}
+        <p>{{tweet.object.from_user}} : {{tweet.object.message}}</p>
     {% endfor %}
     {% endif %}
 </body>
