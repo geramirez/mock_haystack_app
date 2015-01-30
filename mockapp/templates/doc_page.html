@@ -9,7 +9,7 @@
     {% if similars %}
     <h1>Similar Tweets </h1>
     {% for tweet in similars %}
-        <p><a href="/tweet/{{tweet.object.postid}}">{{tweet.object.from_user}}: {{ tweet.object.message }}</a></p>
+        <p><a href="/tweet/{{tweet.django_id}}">{{ tweet.text }}</a></p>
     {% endfor %}
     {% endif %}
 </body>

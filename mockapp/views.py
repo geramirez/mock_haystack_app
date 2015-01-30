@@ -1,6 +1,10 @@
 from django.shortcuts import render
-from haystack.query import SearchQuerySet
+# from haystack.query import SearchQuerySet
 from mockapp.models import Tweet
+
+# We can pass lower-level args into haystack
+from elasticsearch import Elasticsearch
+es = Elasticsearch()
 
 
 def document_page(request, postid):
@@ -12,12 +16,23 @@ def document_page(request, postid):
         pass
 
     try:
-        similars = SearchQuerySet().more_like_this(doc)[0:10]
+        # We can pass lower-level args into haystack
+        similar = es.mlt(
+            index='haystack',
+            id="mockapp.tweet.474636149541969920",
+            doc_type='modelresult',
+            percent_terms_to_match=.1)
+        similar = [t['_source'] for t in similar['hits']['hits']]
+
+        # similars = SearchQuerySet().more_like_this(doc)[0:10]
+
     except:
         # add a message later
         pass
 
+    print(similar)
+
     return render(
         request,
         "doc_page.html",
-        {'doc': doc, 'similars': similars})
+        {'doc': doc, 'similars': similar})
