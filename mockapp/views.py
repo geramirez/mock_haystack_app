@@ -19,7 +19,7 @@ def document_page(request, postid):
         # We can pass lower-level args into haystack
         similar = es.mlt(
             index='haystack',
-            id="mockapp.tweet.474636149541969920",
+            id="mockapp.tweet.%s" % postid,
             doc_type='modelresult',
             percent_terms_to_match=.1)
         similar = [t['_source'] for t in similar['hits']['hits']]
