@@ -4,12 +4,12 @@
     <title>Doc Page</title>
 </head>
 <body>
-    <h1>Tweet</h1>
-    <h4>{{doc.from_user}} : {{doc.message}}<h4>
+    <h1>Document</h1>
+    <h4>{{doc.doc_id}} : {{doc.text}}<h4>
     {% if similars %}
-    <h1>Similar Tweets </h1>
-    {% for tweet in similars %}
-        <p><a href="/tweet/{{tweet.django_id}}">{{ tweet.text }}</a></p>
+    <h1>Similar Documents </h1>
+    {% for request in similars %}
+        <p><a href="/request/{{request.django_id}}">{{ request.text }}</a></p>
     {% endfor %}
     {% endif %}
 </body>

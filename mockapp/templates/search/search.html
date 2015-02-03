@@ -17,7 +17,7 @@
 
             {% for result in page.object_list %}
                 <p>
-                <a href="/tweet/{{result.object.postid}}">{{result.object.from_user}}: {{ result.object.message }}</a>
+                <a href="/request/{{result.object.doc_id}}">{{ result.object.doc_id }}</a>
 
                 </p>
             {% empty %}

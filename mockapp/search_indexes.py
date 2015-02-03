@@ -1,14 +1,14 @@
 from haystack import indexes
-from mockapp.models import Tweet
+from mockapp.models import Request
 
 
-class TweetIndex(indexes.SearchIndex, indexes.Indexable):
+class RequestIndex(indexes.SearchIndex, indexes.Indexable):
+
+    doc_id = indexes.CharField(model_attr='doc_id')
     text = indexes.CharField(document=True, use_template=True)
-    created_time = indexes.DateTimeField(model_attr='created_time')
-    author = indexes.CharField(model_attr='from_user')
 
     def get_model(self):
-        return Tweet
+        return Request
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""

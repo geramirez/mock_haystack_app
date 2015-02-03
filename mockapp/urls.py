@@ -8,5 +8,5 @@ urlpatterns = patterns(
     '',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/', include('haystack.urls')),
-    url(r'^tweet/(?P<postid>\d+)', document_page)
+    url(r'^request/(?P<doc_id>.*)', document_page)
 )
